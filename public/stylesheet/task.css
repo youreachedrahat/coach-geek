@@ -1,0 +1,97 @@
+:root {
+  --blue: #166974;
+  --white: #f9fafa;
+  --orange: #db6400;
+  --blackish: #082032;
+  --yellow: #f0a500;
+  --pinkBright: #ff6584;
+  --pink: #d77fa1;
+  --purple: #baabda;
+}
+* {
+  font-size: 10px;
+}
+.taskPage {
+  margin: auto;
+  max-width: 810px;
+  padding: 10px;
+}
+
+.taskPage p,
+.taskPage b {
+  font-size: 1.6rem;
+  color: var(--blackish);
+}
+.taskPage P {
+  font-weight: 300;
+  margin: 1.6em auto;
+}
+.taskPage h1 {
+  margin-top: 2em;
+  font-size: 4rem;
+  font-weight: 500;
+  color: var(--blackish);
+}
+.taskPage ol {
+  margin-bottom: 2em;
+}
+.taskPage ol li {
+  font-size: 1.4rem;
+}
+.taskPage span {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+.taskPage h5 {
+  font-size: 2rem;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 2em;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.taskFooter {
+  display: flex;
+  justify-content: space-between;
+}
+.taskFooter button {
+  background: var(--blackish);
+  color: var(--white);
+  margin: 0;
+}
+
+.taskFooter i {
+  color: var(--white);
+  margin: 0 0.4em;
+}
+
+.taskFooter a {
+  font-size: 1.3rem;
+}
+
+@media (max-width: 520px) {
+  .taskFooter {
+    flex-direction: column;
+  }
+  .taskFooter a {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

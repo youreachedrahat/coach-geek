@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); -%>
+    <title>LMS | Sign Up</title>
+
+  </head>
+  <body>
+    <%- include('partials/header'); -%>
+    <section class="loginsection">
+      <div class="semicircle">
+        <div class="form">
+        
+        <form action='#' method="post" class="form">
+            <h1>Registeration</h1>
+            <div class="flex">
+              <div class="field">
+                <input type="text" name="firstName" required />
+                <span></span>
+                <label>Name</label>
+              </div>
+              
+              <div class="field">
+                <input type="text" name="lastName" required />
+                <span></span>
+                <label>Last Name</label>
+              </div>
+            </div>
+          <div class="field">
+            <input type="email" name="email" required />
+            <span></span>
+            <label>Email</label>
+          </div>
+          <div class="email error"></div>
+
+          <div class="field">
+            <input type="password" name="password" required />
+            <span></span>
+            <label>Password</label>
+          </div>
+          <div class="password error"></div>
+     
+          
+
+          
+          <input type="submit" value="Next" />
+          <!-- <div class="signup_link">
+            Not a member? <a href="signup.html">Signup</a>
+          </div> -->
+        </div>
+        </form>
+        <script>
+          const form = document.querySelector('form');
+          const emailError = document.querySelector('.email.error');
+          const passwordError = document.querySelector('.password.error');
+
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+                // reset errors
+              emailError.textContent = '';
+              passwordError.textContent = '';
+            const email = form.email.value;
+            const password = form.password.value;
+            const firstName = form.firstName.value;
+            const lastName = form.lastName.value;
+            
+            
+            try {
+      const res = await fetch('/signup', { 
+        method: 'POST', 
+        body: JSON.stringify({ email, password, firstName, lastName }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password;
+      }
+      if (data.user) {
+        location.assign('/profile');
+      }
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+            
+          })
+        </script>
+      </div>
+      </div>
+        <div class="signup">
+            <h1>Already Member?</h1>
+            <p>Login Now.</p>
+            <a href="login"><button class="orange">Login</button></a>
+        </div>
+    </section>
+  </body>
+</html>

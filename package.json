@@ -1,0 +1,33 @@
+{
+  "name": "coach-geek",
+  "version": "1.0.0",
+  "description": "LMS platform",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.3",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.23",
+    "validator": "^13.1.1"
+  },
+  "engines": {
+    "node": "16.13.2",
+    "npm": "8.1.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maleficscorpio/Coach-Geek.git"
+  },
+  "author": "Rahat Sayyed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maleficscorpio/Coach-Geek/issues"
+  },
+  "homepage": "https://github.com/maleficscorpio/Coach-Geek#readme"
+}

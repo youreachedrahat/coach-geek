@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --blue: #166974;
+  --white: #f9fafa;
+  --orange: #db6400;
+  --blackish: #082032;
+  --yellow: #f0a500;
+  --pinkBright: #ff6584;
+  --pink: #d77fa1;
+  --purple: #baabda;
+}
+
+/* header {
+  height: 90px;
+} */
+
+.loginsection {
+  background: var(--blue);
+  background-blend-mode: overlay;
+  background-image: url(background.jpg);
+  background-repeat: no-repeat;
+  height: 85vh;
+  padding: 2em 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.semicircle {
+  /* max-width: 70%; */
+  background-color: var(--white);
+  border-top-right-radius: 30em;
+  border-bottom-right-radius: 30em;
+  height: 80vh;
+  display: grid;
+  align-items: center;
+}
+
+.semicircle h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--blue);
+  margin: 0;
+  text-align: center;
+}
+
+.form {
+  padding: 0 40px;
+  box-sizing: border-box;
+  width: 50%;
+  display: grid;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+.error {
+  margin-bottom: 30px;
+  margin-left: 5px;
+  font-size: 1.3rem;
+  color: var(--blue);
+}
+.field {
+  position: relative;
+  border-bottom: 2px solid var(--blue);
+  margin: 30px 0 0 0;
+  border-radius: 1em;
+}
+
+.field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--blue);
+}
+
+.field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 15px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.field span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--color);
+  scale: 1.1;
+  transition: 0.5s;
+}
+
+.field input:focus ~ label,
+.field input:valid ~ label {
+  top: -5px;
+  transform: scale(0.9);
+  position: absolute;
+  left: 1;
+  color: var(--orange);
+}
+
+.field input:valid ~ span::before .field input:valid ~ span::before {
+  width: 100%;
+}
+
+.form input[type="submit"] {
+  margin: 1em 6em;
+  width: 50%;
+  height: 50px;
+  letter-spacing: 12px;
+  border: 2px solid;
+  border-radius: 2.5em;
+  background: var(--orange);
+  font-size: 1.8rem;
+  color: var(--white);
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
+.form input[type="submit"]:hover {
+  border-color: var(--orange);
+  transition: 0.5s;
+}
+
+.signup {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup h1 {
+  color: var(--white);
+  font-weight: 500;
+  font-size: 3rem;
+  margin: 0;
+}
+.signup p {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--white);
+}
+
+@media (max-width: 980px) {
+  .loginsection {
+    height: fit-content;
+    grid-template-columns: 2fr;
+  }
+  .semicircle {
+    width: 80%;
+  }
+  .form {
+    padding: 0 30px;
+    width: 80%;
+    display: grid;
+    align-items: center;
+  }
+  input[type="submit"] {
+    letter-spacing: 10px;
+  }
+}
+
+@media (max-width: 440px) {
+  .semicircle {
+    width: 100%;
+  }
+  .semicircle h1 {
+    font-size: 2.8rem;
+  }
+  .form {
+    padding: 0 20px;
+    width: 90%;
+  }
+}
+
+@media (max-height: 420px) {
+  .semicircle {
+    height: fit-content;
+  }
+  .loginsection {
+    height: fit-content;
+  }
+}

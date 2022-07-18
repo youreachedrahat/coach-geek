@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); -%>
+  </head>
+  <body>
+    <%- include('partials/header'); -%>
+    <section class="profileview">
+      <div class="photoName">
+        <div class="userimg"><img src="/user" alt="user profile" /></div>
+
+        <h1><%= user.firstName %> <%= user.lastName %></h1>
+
+        <ul>
+          <a href="#" class="selected">Profile</a>
+          <a href="/home"><li>Home</li></a>
+          <a href="/logout"><li>Logout</li></a>
+        </ul>
+      </div>
+      <div class="details">
+        <div class="edit">
+          <a href="/userupdate">Edit</a>
+        </div>
+        <p class="address"><b>About:</b> <%= user.about %></p>
+        <p class="address"><b>Address:</b> <%= user.lastName %></p>
+        <p><b> Email:</b> <%= user.email %></p>
+        <p><b>Password:</b> ********</p>
+        <p><b>Mobile#:</b> <%= user.number %></p>
+        <p><b>Birthdate:</b> <%= user.birthDate %></p>
+      </div>
+    </section>
+  </body>
+</html>

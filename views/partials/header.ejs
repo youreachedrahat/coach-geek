@@ -1,0 +1,27 @@
+<header>
+  <div class="logo">
+    <a href="/"> <img src="/icons/logo.png" alt="" /></a>
+  </div>
+
+  <% if (user) { %>
+  <div class="dropdown">
+    <div class="dropbtn" id="bars"><i class="fas fa-thin fa-user"></i></div>
+    <div class="dropdown-content">
+      <a href="/home">Hello, <%= user.firstName %> </a>
+      <a href="/profile">Profile</a>
+      <a href="/logout"
+        >Logout<i class="fas fa-solid fa-right-from-bracket"></i
+      ></a>
+    </div>
+  </div>
+  <% } else { %>
+  <div class="dropdown-small">
+    <div class="dropbtn-small"><i class="fas fa-solid fa-bars"></i></div>
+    <div class="dropdown-content-small">
+      <a href="/login">Log in</a>
+      <a href="/signup">Sign up</a>
+    </div>
+  </div>
+
+  <% } %>
+</header>

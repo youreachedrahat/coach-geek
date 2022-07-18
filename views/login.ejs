@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); -%>
+    <title>LMS | Login In</title>
+
+  </head>
+  <body>
+    <%- include('partials/header'); -%>
+    <section class="loginsection">
+      <div class="semicircle">
+        <div class="form">
+        
+        <form action="#" method="post" class="form">
+            <h1>Login</h1>
+          <div class="field">
+            <input type="email" name="email" required />
+            <span></span>
+            <label>Email</label>
+          </div>
+          <div class="email error"></div>
+
+          <div class="field">
+            <input type="password" name="password" required />
+            <span></span>
+            <label>Password</label>
+          </div>
+          <div class="password error"></div>
+         
+          <input type="submit" value="Login" />
+          <!-- <div class="signup_link">
+            Not a member? <a href="signup.html">Signup</a>
+          </div> -->
+        </div>
+        </form>
+        <script>
+          const form = document.querySelector('form');
+          const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
+
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+                // reset errors
+              emailError.textContent = '';
+              passwordError.textContent = '';
+            const email = form.email.value;
+            const password = form.password.value;
+            
+            try {
+      const res = await fetch('/login', { 
+        method: 'POST', 
+        body: JSON.stringify({ email, password }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password;
+      }
+      if (data.user) {
+        location.assign('/home');
+      }
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+            
+          })
+        </script>
+      </div>
+      </div>
+        <div class="signup">
+            <h1>Not a Member Yet?</h1>
+            <p>Register Now.</p>
+            <a href="signup"><button class="orange">Create Account</button></a>
+        </div>
+    </section>
+  </body>
+</html>

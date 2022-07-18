@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); -%>
+  </head>
+  <body>
+    <%- include('partials/header'); -%>
+    <section class="course">
+      <h1>Node Demo Course</h1>
+      <h6>Course Content</h6>
+      <p>Week 0:</p>
+
+      <% if (tasks.length > 0){ %>
+        <% tasks.forEach(task => { %>
+         <a class="single" href="/task/<%= task._id %>">
+          <div class="task">
+          <h2 class="title"><%= task.title %></h2>
+      </div>
+    </a>
+        <% }) %>
+        <% } else { %>
+          <div class="task">
+            <h2>There are no Tasks</h2>
+        </div>
+        <% } %>
+      <a href="/Create"> <div class="task">
+        <h2>  Create Task</h2>
+        </div></a>
+    </section>
+</html>

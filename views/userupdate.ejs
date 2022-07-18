@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); -%>
+
+    <style>
+      .details {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('partials/header'); -%>
+    <section class="profileview">
+      <div class="photoName">
+        <div class="userimg"><img src="/user" alt="user profile" /></div>
+        <h1><%= user.firstName %> <%= user.lastName %></h1>
+        <ul>
+          <a href="#" class="selected">Profile</a>
+          <a href="/home"><li>Home</li></a>
+          <a href="/logout"><li>Logout</li></a>
+        </ul>
+      </div>
+      <form action="" class="update">
+        <div class="details">
+          <div class="edit">
+            <input type="submit" value="Save" />
+          </div>
+          <div class="updateInput">
+            <span>First Name:</span>
+            <input
+              type="text"
+              name="firstName"
+              required
+              value="<%= user.firstName %> "
+            />
+          </div>
+          <div class="updateInput">
+            <span>Last Name:</span>
+            <input
+              type="text"
+              name="lastName"
+              required
+              value="<%= user.lastName %> "
+            />
+          </div>
+          <div class="updateInput address">
+            <span>About:</span>
+            <textarea name="about" style="height: 150px" required>
+            <%= user.lastName %>
+
+          </textarea
+            >
+          </div>
+
+          <div class="updateInput address">
+            <span>Address:</span>
+            <textarea name="address" style="height: 110px" required>
+            <%= user.firstName %>
+
+          </textarea
+            >
+          </div>
+
+          <div class="updateInput">
+            <span>Email:</span>
+            <input
+              type="text"
+              name="email"
+              required
+              value="<%= user.email %> "
+            />
+            <div class="email error"></div>
+          </div>
+
+          <div class="updateInput">
+            <span>Password:</span>
+            <input
+              type="password"
+              name="password"
+              placeholder="Blank- Unchanged"
+              required="false"
+            />
+            <div class="password error"></div>
+          </div>
+
+          <div class="updateInput">
+            <span>Mobile #:</span>
+            <input
+              type="text"
+              name="number"
+              required
+              value="<%= user.email %>"
+            />
+          </div>
+
+          <div class="updateInput">
+            <span>Birthdate:</span>
+            <input
+              type="date"
+              name="birthDate"
+              required
+              value="<%= user.email %>"
+            />
+          </div>
+        </div>
+      </form>
+      <script>
+        const form = document.querySelector("form");
+        const emailError = document.querySelector(".email.error");
+        const passwordError = document.querySelector(".password.error");
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          // reset errors
+          emailError.textContent = "";
+          passwordError.textContent = "";
+          const email = form.email.value;
+          const password = form.password.value;
+          const firstName = form.firstName.value;
+          const lastName = form.lastName.value;
+          const number = form.number.value;
+          const birthDate = form.birthDate.value;
+          const about = form.about.value;
+          const address = form.address.value;
+          try {
+            const res = await fetch("/userupdate", {
+              method: "POST",
+              body: JSON.stringify({
+                email,
+                password,
+                firstName,
+                lastName,
+                number,
+                birthDate,
+                about,
+                address,
+              }),
+              headers: { "Content-Type": "application/json" },
+            });
+            const data = await res.json();
+            console.log(data);
+            if (data.errors) {
+              emailError.textContent = data.errors.email;
+              passwordError.textContent = data.errors.password;
+            }
+            if (data.user) {
+              location.assign("/profile");
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        });
+      </script>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); -%>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+      :root {
+        --blue: #166974;
+        --white: #f9fafa;
+        --orange: #db6400;
+        --blackish: #082032;
+        --yellow: #f0a500;
+        --pinkBright: #ff6584;
+        --pink: #d77fa1;
+        --purple: #baabda;
+      }
+      .create-task {
+        max-width: 1350px;
+        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      form {
+        padding: 0 10px;
+        box-sizing: border-box;
+        width: 80%;
+        display: grid;
+        align-items: center;
+      }
+      form * {
+        display: block;
+      }
+      input {
+        width: 100%;
+        color: var(--blackish);
+      }
+      label {
+        color: #082032;
+        font-size: 1.4rem;
+      }
+      button {
+        background: #082032;
+        margin: auto;
+        margin-top: 1em;
+      }
+      button:hover {
+        background: var(--purple);
+        color: var(--blackish);
+      }
+      textarea {
+        color: var(--blackish);
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('partials/header'); -%>
+
+    <div class="create-task">
+      <form action="/home" method="POST">
+        <label for="title">Task title:</label>
+        <input type="text" id="title" name="title" required />
+        <label for="taskName">Task To Do:</label>
+        <input type="text" id="taskName" name="taskName" required />
+        <label for="body">Content:</label>
+        <textarea id="body" name="body" required></textarea>
+
+        <label for="video">Video Link:</label>
+        <input
+          type="text"
+          id="video"
+          name="video"
+          required
+          placeholder="embedded link eg: https://www.youtube.com/embed/zb3Qk8SG5Ms?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU"
+        />
+
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

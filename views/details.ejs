@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); -%>
+  </head>
+  <body>
+    <%- include('partials/header'); -%> <%- include('partials/sidebar'); -%>
+
+    <section class="taskPage">
+      <div class="top">
+        <h1><%= task.title %></h1>
+        <a class="delete" data-doc="<%= task._id %>"
+          ><i class="fas fa-solid fa-trash"></i
+        ></a>
+      </div>
+
+      <div class="content">
+        <p><%= task.taskName %></p>
+        <p><%= task.body %></p>
+
+        <div class="video">
+          <iframe
+            class="responsive-iframe"
+            loading="lazy"
+            title="Node.js Crash Course Tutorial #1 - Introduction &amp; Setup"
+            max-width="1200px"
+            max-height="675px"
+            src="<%= task.video %>"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const trashcan = document.querySelector("a.delete");
+      trashcan.addEventListener("click", (e) => {
+        const endpoint = `/tasks/${trashcan.dataset.doc}`;
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => (window.location.href = data.redirect))
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
+</html>
